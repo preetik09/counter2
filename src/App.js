@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "./components/button";
 
 const App = () => {
   const [counter, setCount] = useState(0);
@@ -7,6 +8,7 @@ const App = () => {
 
   const IncrementBtn = () => {
     // this.setState({ counter: this.state.counter + 1 });
+    console.log("increment");
     setCount(counter + 1);
   };
   const DecreaseBtn = () => {
@@ -36,25 +38,26 @@ const App = () => {
           <h1>Counter App</h1>
           <div className="my-5">
             <h1>{counter}</h1>
-            <button
+            <Button
               className="btn btn-success mx-3"
-              onClick={IncrementBtn}
+              action={IncrementBtn}
               disabled={showBtn === false}
+              name="increment"
               style={styleI}
-            >
-              INCREMENT
-            </button>
-            <button
+              backgroundColor={styleI.backgroundColor}
+            ></Button>
+            <Button
               className="btn btn-success mx-3"
-              onClick={DecreaseBtn}
+              action={DecreaseBtn}
               disabled={counter === 0 || showBtn === false}
-              style={styleD}
-            >
-              DECREMENT
-            </button>
-            <button className="btn btn-danger mx-3" onClick={ShowHideBtn}>
-              {showBtn ? "PAUSE" : "PLAY"}
-            </button>
+              name="decrement"
+              backgroundColor={styleD.backgroundColor}
+            ></Button>
+            <Button
+              className="btn btn-danger mx-3"
+              action={ShowHideBtn}
+              name={!showBtn ? "PLAY" : "PAUSE"}
+            ></Button>
           </div>
         </div>
       </div>
